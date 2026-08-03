@@ -6,7 +6,7 @@
   }
 
   #root {
-    @apply min-h-svh;
+    @apply min-h-svh w-full;
   }
 
   button {

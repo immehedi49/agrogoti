@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import ProjectPage from "./ProjectPage";
+import MisDashboardPage from "./MisDashboardPage";
 
 const slides = [
   { src: "/slides/slide1.jpg", alt: "Slide 1" },
   { src: "/slides/slide2.jpg", alt: "Slide 2" },
+  { src: "/slides/slide3.jpg", alt: "Slide 3" },
+  { src: "/slides/slide4.jpg", alt: "Slide 4" },
 ];
 
 const programs = [
@@ -38,18 +42,41 @@ const programs = [
   },
 ];
 
+const navBtnHomeClass =
+  "cursor-pointer rounded-lg border-2 border-green-700 bg-white px-5 py-2.5 text-[15px] font-bold text-green-700 shadow-md transition-all duration-300 hover:bg-green-700 hover:text-white hover:shadow-lg sm:px-3.5 sm:py-2 sm:text-sm";
+
 const navBtnPrimaryClass =
-  "cursor-pointer rounded-lg border-2 border-white/30 bg-green-600 px-5 py-2.5 text-[15px] font-semibold text-white shadow-md transition-all hover:bg-green-700 hover:shadow-lg sm:px-3.5 sm:py-2 sm:text-sm";
+  "cursor-pointer rounded-lg border-2 border-white/30 bg-blue-600 px-5 py-2.5 text-[15px] font-semibold text-white shadow-md transition-all hover:bg-green-700 hover:shadow-lg sm:px-3.5 sm:py-2 sm:text-sm";
 
 const navBtnSecondaryClass =
   "cursor-pointer rounded-lg border-2 border-white/30 bg-orange-500 px-5 py-2.5 text-[15px] font-semibold text-white shadow-md transition-all hover:bg-orange-600 hover:shadow-lg sm:px-3.5 sm:py-2 sm:text-sm";
 
 const programAccents = [
-  { border: "border-t-4 border-green-500", title: "text-green-600", badge: "bg-green-100 text-green-700" },
-  { border: "border-t-4 border-sky-500", title: "text-sky-600", badge: "bg-sky-100 text-sky-700" },
-  { border: "border-t-4 border-amber-500", title: "text-amber-600", badge: "bg-amber-100 text-amber-700" },
-  { border: "border-t-4 border-violet-500", title: "text-violet-600", badge: "bg-violet-100 text-violet-700" },
-  { border: "border-t-4 border-rose-500", title: "text-rose-600", badge: "bg-rose-100 text-rose-700" },
+  {
+    border: "border-t-4 border-green-500",
+    title: "text-green-600",
+    badge: "bg-green-100 text-green-700",
+  },
+  {
+    border: "border-t-4 border-sky-500",
+    title: "text-sky-600",
+    badge: "bg-sky-100 text-sky-700",
+  },
+  {
+    border: "border-t-4 border-amber-500",
+    title: "text-amber-600",
+    badge: "bg-amber-100 text-amber-700",
+  },
+  {
+    border: "border-t-4 border-violet-500",
+    title: "text-violet-600",
+    badge: "bg-violet-100 text-violet-700",
+  },
+  {
+    border: "border-t-4 border-rose-500",
+    title: "text-rose-600",
+    badge: "bg-rose-100 text-rose-700",
+  },
 ];
 
 const footerLinkClass =
@@ -62,6 +89,8 @@ const socialLinkClass =
 
 function App() {
   const [current, setCurrent] = useState(0);
+  const [showProjectPage, setShowProjectPage] = useState(false);
+  const [showMisDashboardPage, setShowMisDashboardPage] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -74,6 +103,14 @@ function App() {
   const goPrev = () =>
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
   const goNext = () => setCurrent((prev) => (prev + 1) % slides.length);
+
+  if (showProjectPage) {
+    return <ProjectPage onBack={() => setShowProjectPage(false)} />;
+  }
+
+  if (showMisDashboardPage) {
+    return <MisDashboardPage onBack={() => setShowMisDashboardPage(false)} />;
+  }
 
   return (
     <div className="flex min-h-svh flex-col bg-gradient-to-b from-emerald-50 to-white">
@@ -90,36 +127,45 @@ function App() {
             </span>
           </a>
           <nav className="flex gap-3">
-            <button type="button" className={navBtnPrimaryClass}>
-              button1
+            <button type="button" className={navBtnHomeClass}>
+              Home
             </button>
-            <button type="button" className={navBtnSecondaryClass}>
-              button2
+            <button
+              type="button"
+              onClick={() => setShowProjectPage(true)}
+              className={navBtnPrimaryClass}
+            >
+              Project
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowMisDashboardPage(true)}
+              className={navBtnSecondaryClass}
+            >
+              MIS Dashboard
             </button>
           </nav>
         </div>
       </header>
 
       <section
-        className="relative h-[420px] overflow-hidden bg-gradient-to-br from-green-400 via-teal-400 to-sky-400 sm:h-[280px]"
+        className="relative w-full overflow-hidden bg-neutral-900"
         aria-label="Image slideshow"
       >
-        <div className="relative h-full w-full">
+        <div className="relative w-full">
           {slides.map((slide, index) => (
             <img
               key={slide.src}
               src={slide.src}
               alt={slide.alt}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[600ms] ease-in-out ${
+              className={`w-full h-auto max-h-[75vh] object-contain transition-opacity duration-[600ms] ease-in-out ${
                 index === current
-                  ? "pointer-events-auto opacity-100"
-                  : "pointer-events-none opacity-0"
+                  ? "relative block opacity-100"
+                  : "absolute inset-x-0 top-0 opacity-0 pointer-events-none"
               }`}
             />
           ))}
         </div>
-
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-green-900/30 via-transparent to-orange-500/20" />
 
         <button
           type="button"
@@ -138,7 +184,7 @@ function App() {
           ›
         </button>
 
-        <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2.5">
+        <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2.5 pb-2">
           {slides.map((slide, index) => (
             <button
               key={slide.src}
@@ -152,6 +198,89 @@ function App() {
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
+        </div>
+      </section>
+
+      <section className="bg-white px-6 py-14 sm:px-4 sm:py-10">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-8 text-center text-3xl font-bold leading-tight text-green-700 sm:text-2xl">
+            Management Information System for Agrogoti Sangstha
+          </h2>
+
+          <p className="mb-10 text-justify text-base leading-relaxed text-gray-700 sm:text-sm">
+            Agrogoti Sangstha (AS), established in 1988 and registered as an NGO
+            in 1998, works to improve the lives of vulnerable communities in
+            Satkhira and Khulna through projects on climate change, human
+            rights, health, education, gender equality, and livelihoods. AS is
+            currently implementing the GIZ-funded IKI Small Grants Project (July
+            2025–June 2027), which focuses on strengthening climate resilience
+            and improving livelihoods in climate-vulnerable areas. To
+            effectively manage project activities, monitor progress, and meet
+            donor reporting requirements, AS needs a simple, cloud-based
+            Management Information System (MIS). The MIS will support real-time
+            data collection, improve data accuracy, reduce manual reporting, and
+            help AS make informed decisions while ensuring transparency and
+            accountability.
+          </p>
+
+          <h3 className="mb-4 text-2xl font-bold text-emerald-600 sm:text-xl">
+            Rationale
+          </h3>
+
+          <p className="text-justify text-base leading-relaxed text-gray-700 sm:text-sm">
+            Agrogoti Sangstha (AS) currently uses manual reporting and
+            fragmented data management systems, which create challenges such as
+            delayed reporting, inconsistent data, and limited real-time
+            monitoring. These issues are particularly significant for the
+            GIZ-funded IKI Small Grants Project, which requires accurate,
+            timely, and donor-compliant reporting. Implementing a centralized,
+            cloud-based Management Information System (MIS) will improve data
+            quality, enable real-time monitoring, automate reporting, support
+            informed decision-making, and strengthen transparency,
+            accountability, and the organization&apos;s long-term project
+            management capacity.
+          </p>
+          {/* Objective */}
+          <div className="mt-12">
+            <h3 className="mb-5 text-2xl font-bold text-emerald-600 sm:text-xl">
+              Objective
+            </h3>
+
+            <img
+              src="/slides/objective.png"
+              alt="Objective"
+              className="mb-5 w-full rounded-xl h-90"
+            />
+
+            <p className="text-justify text-base leading-relaxed text-gray-700 sm:text-sm">
+              The overall objective of this assignment is to design and
+              implement a centralized, cloud-based Management Information System
+              (MIS) that enhances data management, monitoring, reporting, and
+              decision-making across Agrogoti Sangstha&apos;s projects, with a
+              particular focus on the IKI Small Grants Project.
+            </p>
+          </div>
+
+          {/* Methodology */}
+          <div className="mt-12">
+            <h3 className="mb-5 text-2xl font-bold text-emerald-600 sm:text-xl">
+              Methodology
+            </h3>
+
+            <img
+              src="/slides/methodology.png"
+              alt="Methodology"
+              className="mb-5 w-full rounded-xl h-90"
+            />
+
+            <p className="text-justify text-base leading-relaxed text-gray-700 sm:text-sm">
+              The consultant or firm is expected to adopt a participatory,
+              phased, and iterative approach to the design and implementation of
+              the MIS. The methodology should ensure that the system is
+              user-friendly, scalable, aligned with donor requirements, and
+              responsive to Agrogoti Sangstha&apos;s operational needs.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -171,7 +300,9 @@ function App() {
                 index === 3 ? "max-md:col-start-auto md:col-start-2" : ""
               } ${index === 4 ? "max-md:col-span-full max-md:max-w-[360px] max-md:justify-self-center max-sm:max-w-none md:col-start-4" : ""}`}
             >
-              <span className={`mb-3 rounded-full px-3 py-1 text-xs font-semibold ${programAccents[index].badge}`}>
+              <span
+                className={`mb-3 rounded-full px-3 py-1 text-xs font-semibold ${programAccents[index].badge}`}
+              >
                 Program {index + 1}
               </span>
               <img
@@ -179,18 +310,21 @@ function App() {
                 alt={program.title}
                 className="mb-4.5 h-[180px] w-full rounded-lg object-cover ring-2 ring-white sm:h-[200px]"
               />
-              <h3 className={`mb-2.5 text-lg font-bold leading-snug ${programAccents[index].title}`}>
+              <h3
+                className={`mb-2.5 text-lg font-bold leading-snug ${programAccents[index].title}`}
+              >
                 {program.title}
               </h3>
               <p className="mb-4 flex-1 text-sm leading-relaxed text-gray-600">
                 {program.description}
               </p>
-              <a
-                href="#"
+              <button
+                type="button"
+                onClick={() => setShowProjectPage(true)}
                 className="rounded-full bg-gradient-to-r from-orange-500 to-rose-500 px-4 py-1.5 text-[13px] font-bold tracking-wide text-white no-underline transition-opacity hover:opacity-85"
               >
                 LEARN MORE
-              </a>
+              </button>
             </article>
           ))}
         </div>
@@ -209,7 +343,11 @@ function App() {
               change.
             </p>
             <div className="flex gap-3.5">
-              <a href="#" aria-label="Facebook" className={`${socialLinkClass} bg-blue-600 hover:bg-blue-500`}>
+              <a
+                href="#"
+                aria-label="Facebook"
+                className={`${socialLinkClass} bg-blue-600 hover:bg-blue-500`}
+              >
                 <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                   <path
                     d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07c0 6.02 4.39 11.01 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.23 2.68.23v2.96h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.32l-.53 3.49h-2.79v8.44C19.61 23.08 24 18.09 24 12.07z"
@@ -217,7 +355,11 @@ function App() {
                   />
                 </svg>
               </a>
-              <a href="#" aria-label="Twitter" className={`${socialLinkClass} bg-sky-500 hover:bg-sky-400`}>
+              <a
+                href="#"
+                aria-label="Twitter"
+                className={`${socialLinkClass} bg-sky-500 hover:bg-sky-400`}
+              >
                 <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                   <path
                     d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
@@ -225,7 +367,11 @@ function App() {
                   />
                 </svg>
               </a>
-              <a href="#" aria-label="Instagram" className={`${socialLinkClass} bg-gradient-to-br from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400`}>
+              <a
+                href="#"
+                aria-label="Instagram"
+                className={`${socialLinkClass} bg-gradient-to-br from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400`}
+              >
                 <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                   <path
                     d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
@@ -233,7 +379,11 @@ function App() {
                   />
                 </svg>
               </a>
-              <a href="#" aria-label="YouTube" className={`${socialLinkClass} bg-red-600 hover:bg-red-500`}>
+              <a
+                href="#"
+                aria-label="YouTube"
+                className={`${socialLinkClass} bg-red-600 hover:bg-red-500`}
+              >
                 <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                   <path
                     d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
