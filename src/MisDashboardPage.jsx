@@ -1,45 +1,232 @@
 import { useState } from "react";
-import Project1Page from "./Project1Page";
-import Project2Page from "./Project2Page";
-import Project3Page from "./Project3Page";
-import Project4Page from "./Project4Page";
-import Project5Page from "./Project5Page";
-import Project6Page from "./Project6Page";
-import Project7Page from "./Project7Page";
-import Project8Page from "./Project8Page";
-import Project9Page from "./Project9Page";
-import Project10Page from "./Project10Page";
+import ProjectPage from "./ProjectPage";
 
 const projects = [
-  { id: 1, name: "IKI Project", title: "Project 1", logo: "/slides/logo1.svg" },
-  { id: 2, name: "Srijon", title: "Project 2", logo: "/slides/logo2.svg" },
+  {
+    id: 1,
+    name: "IKI",
+    title: "Project 1",
+    logo: "/slides/logo1.svg",
+    count: 5,
+    subItems: [
+      {
+        name: "IKI Family Profile",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiMTkxY2RlODgtM2VmMC00MzhmLWJlNjYtYTBiOTc5NzAyOTNjIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "IKI Project Activities Information",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiM2I0MGY4NjAtMjM4Zi00ZDc1LWI0ZWYtY2ZlZTViMjA4MDJhIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "IKI Target vs Achievement",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiM2I1YTU2Y2QtNDc4Yi00NzQ1LTg2MWYtODdmODE1ZTRiYmI1IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "IKI FDP BDP Form",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiOGM0MGQ2OGEtMzdjMi00MmQzLWJlNDYtMTM5M2Y2Mzc5MGM0IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "IKI Transfer of Productive Assets",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiNGJmMTkxNzYtMjc4OS00MTY3LThkNDAtMWM3MThhMjExNDQzIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Srijon",
+    title: "Project 2",
+    logo: "/slides/logo2.svg",
+    count: 5,
+    subItems: [
+      {
+        name: "Srijan Family Profile",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiMmE0MjM4ZjAtYmQ5Mi00ODNlLTlkZGMtOWM1ZTNmOGY4YzQ1IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Project Activities Information",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiOTMzY2M2MGYtYTFkNi00ODAyLTk2OGMtMmYzOTQ1M2ZhZDdiIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Srijan Asset Transfer",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiNmE0OTA3ZjYtZjhlYS00ZDFiLWJkODItZmZmNzNjZTc4N2VjIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Srijan FDP BDP Form",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiMWU4NDRmODEtZTg0MS00YzYyLWFlN2QtNDA2ZDQ2YWU3OTljIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Srijan Target vs Achievement",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiNDBlZjEzYjgtMmJlYS00OWRjLWJmNTgtMmFkNDYxZTVkNWM2IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+    ],
+  },
   {
     id: 3,
-    name: "Ashash Project",
+    name: "Ashshash",
     title: "Project 3",
     logo: "/slides/logo3.svg",
+    count: 8,
+    subItems: [
+      {
+        name: "Ashshash Career Counseling",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiMWU2MzRhNzQtNjhjOC00MzQxLWIxZTYtZDFkMGNkN2RmOTcwIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Ashshash Classroom Based Training",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiNDY5ZTk4MTctY2UwOC00ZTAxLWI1OWItNDkzZDFlZWZmNTk4IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Ashshash Entrepreneurship Development Tr",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiM2MyOTc1ZDYtZWI3Yi00MjA5LWI4Y2UtNWQ5Yzc1YTFhZGE0IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Ashshash Identification",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiMzE4NDU2NTYtZWRmNy00MzllLTg3YmEtMDViOGM2ZmJjYjE4IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Ashshash Life Skills Training",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiOTdmM2NkYjctMzdjNC00MGNlLTk1MzctNjkxZGMxNzEyMGVmIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Ashshash Mentor-Mentee Based Training",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiNjlhMjcxOGQtNjhlMy00MmQ4LTk4YjAtZDYyODRkNTFiYzMyIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Ashshash Psychosocial Counseling",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiYjkxMTRhMjAtZDg0Zi00MWEyLTk2Y2MtYWViMmMwZmJkZTY0IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Ashshash Upskill Training",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiNTI4N2U0NzYtY2M2NS00MzQyLThiZDAtZjE5MWFlNzZiNjY3IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+    ],
   },
-  { id: 4, name: "SIRRM", title: "Project 4", logo: "/slides/logo4.svg" },
-  { id: 5, name: "FSTIP", title: "Project 5", logo: "/slides/logo5.svg" },
-  { id: 6, name: "Grow School", title: "Project 6", logo: "/slides/logo6.svg" },
+  {
+    id: 4,
+    name: "SIRRM",
+    title: "Project 4",
+    logo: "/slides/logo4.svg",
+    count: 2,
+    subItems: [
+      {
+        name: "SIRRM Minority Rights Forum Monthly Meeting",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiM2EwNWMzMTgtNTIxOC00ODY4LWExNjgtMWIzMzYzNTc5MzRhIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "SIRRM Right Defenders Youth Group",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiNjJlMGUyNWQtY2E0Yy00YjI2LTliYWMtNjA1YmFjOTc1YmUyIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "FSTIP",
+    title: "Project 5",
+    logo: "/slides/logo5.svg",
+    count: 4,
+    subItems: [
+      {
+        name: "FSTIP Event",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiMDQ1YTliZGQtMzUyNi00OThmLWIwOGQtN2RjYjZiYzhkNGZlIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "FSTIP Peer Leader",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiOWJiYjFkZDItZmVkNy00YjI5LThlNjMtMDU4OWYyMmE1MmRjIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "FSTIP Survivors",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiOTllOGIzZWUtYzc0Yi00YzBkLTk1ZTUtYTkzYzg3YjRjMWJhIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "FSTIP Training",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiMmQzODAzYjctMjJkYS00NWJiLTg3NjEtZTIyZmI4MTI0OWUyIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "Grow School",
+    title: "Project 6",
+    logo: "/slides/logo6.svg",
+    count: 2,
+    subItems: [
+      {
+        name: "Grow School Meeting with stakeholder Form",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiZGVlMTI4ZTQtMzk1Yi00YTUzLWE2NDctOGE0OTc5ZmJjMGQ5IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "Grow School Student Profile and Educational Support Form",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiYmQzOTQzM2QtNTQ1OC00OGE5LThhNDgtMzZkYmI2ZTg0YzI2IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+    ],
+  },
   {
     id: 7,
     name: "BNF Bangladesh",
     title: "Project 7",
     logo: "/slides/logo7.svg",
+    count: 1,
+    subItems: [
+      {
+        name: "BNF Project IGA Support Form",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiYzEwZGQ4ZTQtYmIxYy00MGQyLTg1ZmYtMTI5MDk1YTI0NGUyIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+    ],
   },
   {
     id: 8,
-    name: "Sapath Project",
+    name: "Sapath",
     title: "Project 8",
     logo: "/slides/logo8.svg",
+    count: 0,
   },
-  { id: 9, name: "ARC", title: "Project 9", logo: "/slides/logo9.svg" },
+  {
+    id: 9,
+    name: "ARC",
+    title: "Project 9",
+    logo: "/slides/logo9.svg",
+    count: 1,
+    subItems: [
+      {
+        name: "ARC Project- IGA Support Form",
+        dashboardUrl:
+          "https://app.powerbi.com/view?r=eyJrIjoiN2JlOTA0NDMtZWQ2NS00MzQ2LTljMWUtMTE2YWU0ZWU3YTU3IiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+    ],
+  },
   {
     id: 10,
-    name: "Nagorikota",
+    name: "Jaagoron ",
     title: "Project 10",
     logo: "/slides/logo10.svg",
+    count: 0,
   },
 ];
 
@@ -97,23 +284,15 @@ const projectAccents = [
 ];
 
 function MisDashboardPage({ onBack }) {
-  const [activeProjectId, setActiveProjectId] = useState(null);
+  const [activeProject, setActiveProject] = useState(null);
 
-  const projectPages = {
-    1: <Project1Page onBack={() => setActiveProjectId(null)} />,
-    2: <Project2Page onBack={() => setActiveProjectId(null)} />,
-    3: <Project3Page onBack={() => setActiveProjectId(null)} />,
-    4: <Project4Page onBack={() => setActiveProjectId(null)} />,
-    5: <Project5Page onBack={() => setActiveProjectId(null)} />,
-    6: <Project6Page onBack={() => setActiveProjectId(null)} />,
-    7: <Project7Page onBack={() => setActiveProjectId(null)} />,
-    8: <Project8Page onBack={() => setActiveProjectId(null)} />,
-    9: <Project9Page onBack={() => setActiveProjectId(null)} />,
-    10: <Project10Page onBack={() => setActiveProjectId(null)} />,
-  };
-
-  if (activeProjectId) {
-    return projectPages[activeProjectId];
+  if (activeProject) {
+    return (
+      <ProjectPage
+        project={activeProject}
+        onBack={() => setActiveProject(null)}
+      />
+    );
   }
 
   return (
@@ -160,7 +339,7 @@ function MisDashboardPage({ onBack }) {
               </h3>
               <button
                 type="button"
-                onClick={() => setActiveProjectId(project.id)}
+                onClick={() => setActiveProject(project)}
                 className="rounded-full bg-gradient-to-r from-orange-500 to-rose-500 px-5 py-1.5 text-[13px] font-bold tracking-wide text-white transition-opacity hover:opacity-85"
               >
                 Dashboard
