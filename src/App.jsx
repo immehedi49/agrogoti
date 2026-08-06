@@ -158,10 +158,10 @@ function App() {
               key={slide.src}
               src={slide.src}
               alt={slide.alt}
-              className={`w-full h-auto max-h-[75vh] object-contain transition-opacity duration-[600ms] ease-in-out ${
+              className={`w-full h-[75vh] object-cover transition-opacity duration-[600ms] ease-in-out ${
                 index === current
                   ? "relative block opacity-100"
-                  : "absolute inset-x-0 top-0 opacity-0 pointer-events-none"
+                  : "absolute inset-0 opacity-0 pointer-events-none"
               }`}
             />
           ))}
