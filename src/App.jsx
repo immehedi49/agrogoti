@@ -3,10 +3,58 @@ import ProjectPage from "./ProjectPage";
 import MisDashboardPage from "./MisDashboardPage";
 
 const slides = [
-  { src: "/slides/slide1.jpg", alt: "Slide 1" },
-  { src: "/slides/slide2.jpg", alt: "Slide 2" },
-  { src: "/slides/slide3.jpg", alt: "Slide 3" },
-  { src: "/slides/slide4.jpg", alt: "Slide 4" },
+  {
+    src: "/slides/slide1.jpg",
+    alt: "Agrogoti Sangstha - Slide 1",
+  },
+  {
+    src: "/slides/slide2.jpg",
+    alt: "Agrogoti Sangstha - Slide 2",
+  },
+  {
+    src: "/slides/slide3.jpg",
+    alt: "Agrogoti Sangstha - Slide 3",
+  },
+  {
+    src: "/slides/slide4.jpg",
+    alt: "Agrogoti Sangstha - Slide 4",
+  },
+  {
+    src: "/slides/slide5.jpeg",
+    alt: "Agrogoti Sangstha - Slide 5",
+  },
+  {
+    src: "/slides/slide6.jpeg",
+    alt: "Agrogoti Sangstha - Slide 6",
+  },
+  {
+    src: "/slides/fstip.jpeg",
+    alt: "FSTIP Project",
+  },
+  {
+    src: "/slides/jagoron.jpeg",
+    alt: "Jaagoron Project",
+  },
+  {
+    src: "/slides/srijan.jpeg",
+    alt: "Srijon Project",
+  },
+  {
+    src: "/slides/ashash.jpeg",
+    alt: "Ashshash Project",
+  },
+  {
+    src: "/slides/sapath.jpeg",
+    alt: "SAPATH Project",
+  },
+  {
+    src: "/slides/grow-school.jpeg",
+    alt: "Grow School Project",
+  },
+  {
+    src: "/slides/sirrm.jpeg",
+    alt: "SIRRM Project",
+  },
 ];
 
 const programs = [
@@ -93,16 +141,26 @@ function App() {
   const [showMisDashboardPage, setShowMisDashboardPage] = useState(false);
 
   useEffect(() => {
+    if (slides.length <= 1) return;
+
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 4000);
+
     return () => clearInterval(timer);
   }, []);
 
-  const goTo = (index) => setCurrent(index);
-  const goPrev = () =>
+  const goTo = (index) => {
+    setCurrent(index);
+  };
+
+  const goPrev = () => {
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-  const goNext = () => setCurrent((prev) => (prev + 1) % slides.length);
+  };
+
+  const goNext = () => {
+    setCurrent((prev) => (prev + 1) % slides.length);
+  };
 
   if (showProjectPage) {
     return <ProjectPage onBack={() => setShowProjectPage(false)} />;
@@ -152,52 +210,77 @@ function App() {
         className="relative w-full overflow-hidden bg-neutral-900"
         aria-label="Image slideshow"
       >
-        <div className="relative w-full">
-          {slides.map((slide, index) => (
-            <img
-              key={slide.src}
-              src={slide.src}
-              alt={slide.alt}
-              className={`w-full h-[75vh] object-cover transition-opacity duration-[600ms] ease-in-out ${
-                index === current
-                  ? "relative block opacity-100"
-                  : "absolute inset-0 opacity-0 pointer-events-none"
-              }`}
-            />
-          ))}
+        {/* Slideshow Image */}
+        <div className="relative h-[75vh] w-full sm:h-[60vh]">
+          <img
+            key={slides[current].src}
+            src={slides[current].src}
+            alt={slides[current].alt}
+            className="h-full w-full object-cover transition-opacity duration-700 ease-in-out"
+            onError={(e) => {
+              console.error(
+                `Failed to load slideshow image: ${slides[current].src}`,
+              );
+
+              e.currentTarget.style.display = "none";
+            }}
+          />
+
+          {/* Error message */}
+          <div
+            className="absolute inset-0 hidden items-center justify-center bg-gray-900 text-center text-white"
+            id="slide-error"
+          >
+            <div>
+              <p className="text-lg font-bold">Image could not be loaded</p>
+              <p className="mt-2 text-sm text-white/70">
+                {slides[current].src}
+              </p>
+            </div>
+          </div>
         </div>
 
+        {/* Previous Button */}
         <button
           type="button"
-          className="absolute top-1/2 left-4 z-10 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-2 border-white bg-green-500 text-[28px] leading-none text-white shadow-lg transition-all hover:scale-105 hover:bg-green-600 sm:h-9 sm:w-9 sm:text-[22px]"
+          className="absolute left-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-2 border-white bg-green-500 text-[28px] leading-none text-white shadow-lg transition-all hover:scale-105 hover:bg-green-600 sm:h-9 sm:w-9 sm:text-[22px]"
           onClick={goPrev}
           aria-label="Previous slide"
         >
           ‹
         </button>
+
+        {/* Next Button */}
         <button
           type="button"
-          className="absolute top-1/2 right-4 z-10 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-2 border-white bg-orange-500 text-[28px] leading-none text-white shadow-lg transition-all hover:scale-105 hover:bg-orange-600 sm:h-9 sm:w-9 sm:text-[22px]"
+          className="absolute right-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-2 border-white bg-orange-500 text-[28px] leading-none text-white shadow-lg transition-all hover:scale-105 hover:bg-orange-600 sm:h-9 sm:w-9 sm:text-[22px]"
           onClick={goNext}
           aria-label="Next slide"
         >
           ›
         </button>
 
-        <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2.5 pb-2">
+        {/* Slide Indicators */}
+        <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 flex-wrap justify-center gap-2 pb-2">
           {slides.map((slide, index) => (
             <button
               key={slide.src}
               type="button"
-              className={`h-3 w-3 cursor-pointer rounded-full border-2 border-white p-0 transition-[background,transform] duration-200 ${
+              onClick={() => goTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              aria-current={index === current ? "true" : "false"}
+              className={`h-3 w-3 cursor-pointer rounded-full border-2 border-white p-0 transition-all duration-200 ${
                 index === current
                   ? "scale-125 bg-amber-400"
                   : "bg-white/40 hover:bg-white/70"
               }`}
-              onClick={() => goTo(index)}
-              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
+        </div>
+
+        {/* Slide Number */}
+        <div className="absolute bottom-5 right-5 z-10 rounded-full bg-black/50 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+          {current + 1} / {slides.length}
         </div>
       </section>
 
