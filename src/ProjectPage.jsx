@@ -3,11 +3,13 @@ import React from "react";
 const projects = [
   {
     title: "IKI",
+    image: "/slides/slide6.jpeg",
     description:
       "The IKI Project focuses on improving climate resilience and sustainable livelihoods in vulnerable communities. It includes household profiling, Farmer Development Program (FDP) activities, training and implementation planning, weekly group meetings, and Income Generating Activity (IGA) support for 720 households.",
   },
   {
     title: "Srijon",
+    image: "/slides/srijan.jpeg",
     description: `Project Title: Strengthening the resilience and adaptive capacity of vulnerable groups and empowering civil society in the context of climate change in Bangladesh (SRIJAN) 
 Project Duration: 01 August 2022 to 30 September 2026
 Funded by & supported by: Funded by: German Federal Ministry for Economic Cooperation and Development (BMZ), Supported by: NETZ Bangladesh
@@ -26,6 +28,7 @@ Another important part of the project is strengthening dialogue between communit
   },
   {
     title: "Ashshash",
+    image: "/slides/ashash.jpeg",
     description: `Project Title: Ashshash: For Men And Women Who Have Escaped Trafficking
 Project Duration: December 2023- January 2027
 Funded by & supported by: Funded by: Switzerland Embassy, Bangladesh and supported by: Winrock International
@@ -36,6 +39,7 @@ The project is being implemented across ten districts of Bangladesh in partnersh
   },
   {
     title: "SIRRM",
+    image: "/slides/sirrm.jpeg",
     description: `Project Title: SIRRM
 Project Duration: From 1st June 2025 to 31 May 2028
 Funded by: the European Union 
@@ -50,6 +54,7 @@ Summary of the project: SIRRM seeks to strengthen the rights, resilience, social
   },
   {
     title: "FSTIP",
+    image: "/slides/fstip.jpeg",
     description: `Project Title: Fight Slavery & Trafficking-In-Persons (FSTIP) Program
 Project Duration: 04 years (1st April 2022 to 31st March 2026)
 Funded by & supported by: United States Agency for International Development (USAID) & United States Department of State (USDOS)
@@ -65,6 +70,7 @@ Funded by the United States Agency for International Development (USAID) & Unite
   },
   {
     title: "Grow School",
+    image: "/slides/grow-school.jpeg",
     description: `Project Title: GROW SCHOOL
 Project Duration: From 1 January 2025 to 31 December 2027
 Supported by: Global Learning, Sweden
@@ -81,11 +87,13 @@ Through educational support, multigrade learning opportunities, parenting sessio
   },
   {
     title: "BNF Bangladesh",
+    image: "/slides/slide5.jpeg",
     description:
       "The BNF Bangladesh Project provides vocational and skills training to community members. Its goal is to increase employment opportunities, improve income generation, and strengthen economic independence.",
   },
   {
     title: "Sapath",
+    image: "/slides/sapath.jpeg",
     description: `Title: Strengthening Actions for Prevention and Abatement of Trafficking through Initiating Social Hub Project (SAPATH)
 Donor: Mumbai Smiles
 Project Objectives:
@@ -100,6 +108,7 @@ Overall, SAPATH seeks to build informed, resilient, and proactive communities an
   },
   {
     title: "ARC",
+    image: "/slides/slide6.jpeg",
     description: `Project Title: Adolescent Resource Centre (ARC)
 Project Duration: Ongoing
 Supported by: Agrogoti Sangstha
@@ -117,6 +126,7 @@ Through these initiatives, ARC supports youth capacity development, skills enhan
   },
   {
     title: "Jaagoron",
+    image: "/slides/jagoron.jpeg",
     description: `Project Title: JAAGORON
 Project Duration: 30 Months
 Funded by & supported by: GFA Consulting Group & Nagorikota- Civic Engagement Fund
@@ -248,6 +258,11 @@ function ProjectPage({ onBack, project }) {
                 <h2 className="mb-3 text-xl font-bold text-green-700">
                   {p.title}
                 </h2>
+                <img
+                  src={p.image}
+                  alt={`${p.title} project`}
+                  className="mb-4 h-48 w-full rounded-xl object-cover"
+                />
                 <p className="whitespace-pre-line text-sm leading-7 text-gray-700">
                   {p.description}
                 </p>
