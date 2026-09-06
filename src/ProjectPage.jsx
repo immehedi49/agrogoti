@@ -4,8 +4,16 @@ const projects = [
   {
     title: "IKI",
     image: "/slides/slide6.jpeg",
-    description:
-      "The IKI Project focuses on improving climate resilience and sustainable livelihoods in vulnerable communities. It includes household profiling, Farmer Development Program (FDP) activities, training and implementation planning, weekly group meetings, and Income Generating Activity (IGA) support for 720 households.",
+    description: `Project Title: The Promoting Resilience in Households and Communities Vulnerable to Climate Change in Satkhira 
+Project Duration: From July 2025 to June 2027
+Supported by: Funded by: IKI Small Grants through GIZ
+Project Objectives: 
+01: 720 households in Satkhira districts have increased income through climate- adaptive off-farm and on-farm livelihood options.
+02: 36 village groups have developed climate-resilient communities in targeted areas by implementing climate resilience plans.
+03: Climate-vulnerable groups have taken initiatives to influence policies that affect their lives at the local level.
+
+Summary of the project: 
+The working of IKI project are 12 Unions of Tala, Kaligonj and shyamnagar Upazila under Satkhira District. The communities in Satkhira district, Bangladesh, are highly vulnerable to climate change-related disasters, including droughts, cyclones, floods, and soil salinization, which impact agricultural production and livelihoods. The IKI Small Grants project aims to promote climate-resilient livelihoods, advocate for climate justice, and strengthen knowledge and awareness on climate risk management and adaptation. The project will inform 720 households about climate-adaptive livelihoods, support 36 village groups with capacity building, supported productive assets to 720 households and submit 150 Right to Information requests to public authorities. Additionally, several ‘Youth Climate Clubs’ will be established. Collaboration with various institutions will facilitate the upscaling and replication of successful strategies.`,
   },
   {
     title: "Srijon",
