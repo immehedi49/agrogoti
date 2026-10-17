@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+
+@layer base {
+  body {
+    @apply m-0 font-sans antialiased;
+  }
+
+  #root {
+    @apply min-h-svh w-full;
+  }
+
+  button {
+    @apply font-[inherit];
+  }
+}
