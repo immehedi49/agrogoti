@@ -115,6 +115,7 @@ function App() {
   const [current, setCurrent] = useState(0);
   const [showProjectPage, setShowProjectPage] = useState(false);
   const [showMisDashboardPage, setShowMisDashboardPage] = useState(false);
+  const [showSummaryDashboardPage, setShowSummaryDashboardPage] = useState(false);
 
   useEffect(() => {
     if (slides.length <= 1) return;
@@ -144,6 +145,15 @@ function App() {
 
   if (showMisDashboardPage) {
     return <MisDashboardPage onBack={() => setShowMisDashboardPage(false)} />;
+  }
+
+  if (showSummaryDashboardPage) {
+    return (
+      <ProjectPage
+        project={{ name: "Summary Dashboard", count: 0 }}
+        onBack={() => setShowSummaryDashboardPage(false)}
+      />
+    );
   }
 
   return (
@@ -180,8 +190,8 @@ function App() {
             </button>
             <button
               type="button"
-              // onClick={() => setShowMisDashboardPage(true)}
-               className={navBtnSecondaryClass}
+              onClick={() => setShowSummaryDashboardPage(true)}
+              className={navBtnSecondaryClass}
             >
               Summary Dashboard
             </button>
