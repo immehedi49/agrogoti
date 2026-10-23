@@ -12,14 +12,6 @@ const slides = [
     alt: "Agrogoti Sangstha - Slide 2",
   },
   {
-    src: "/slides/slide3.jpg",
-    alt: "Agrogoti Sangstha - Slide 3",
-  },
-  {
-    src: "/slides/slide4.jpg",
-    alt: "Agrogoti Sangstha - Slide 4",
-  },
-  {
     src: "/slides/slide5.jpeg",
     alt: "Agrogoti Sangstha - Slide 5",
   },
@@ -184,7 +176,14 @@ function App() {
               onClick={() => setShowMisDashboardPage(true)}
               className={navBtnSecondaryClass}
             >
-              MIS Dashboard
+              Power BI Dashboard
+            </button>
+            <button
+              type="button"
+              // onClick={() => setShowMisDashboardPage(true)}
+               className={navBtnSecondaryClass}
+            >
+              Summary Dashboard
             </button>
           </nav>
         </div>
@@ -275,19 +274,7 @@ function App() {
           </h2>
 
           <p className="mb-10 text-justify text-base leading-relaxed text-gray-700 sm:text-sm">
-            Agrogoti Sangstha (AS), established in 1988 and registered as an NGO
-            in 1998, works to improve the lives of vulnerable communities in
-            Satkhira and Khulna through projects on climate change, human
-            rights, health, education, gender equality, and livelihoods. AS is
-            currently implementing the GIZ-funded IKI Small Grants Project (July
-            2025–June 2027), which focuses on strengthening climate resilience
-            and improving livelihoods in climate-vulnerable areas. To
-            effectively manage project activities, monitor progress, and meet
-            donor reporting requirements, AS needs a simple, cloud-based
-            Management Information System (MIS). The MIS will support real-time
-            data collection, improve data accuracy, reduce manual reporting, and
-            help AS make informed decisions while ensuring transparency and
-            accountability.
+            Agrogoti Sangstha (AS), established in 1988 and registered as an NGO in 1998, works to improve the lives of vulnerable communities in Satkhira and Khulna through interventions in climate change, human rights, health, education, gender equality, Trafficking and livelihoods. The organization currently operates under six core program areas: (i) Promoting Climate Resilience & Sustainable Livelihoods (ii) Upholding Human Rights (iii) Advancing SRHR & Community Health & Nutrition Revolution (iv) Empowering Youth, Women & Child (v) Strengthening Good Governance and Social Accountability (vi) Institutional Sustainability. AS is presently implementing 11 major projects, namely: IKI Small Grants, SRIJAN, Ashshash, SIRRM, Grow School, BNF Bangladesh, SAPATH, ARC, JAAGORON, PUSHPA FUND, SONGJOG Project. To effectively manage project activities, monitor progress, track results, and meet donor reporting requirements, AS requires a simple, user-friendly, and cloud-based Management Information System (MIS). The MIS will facilitate real-time data collection and monitoring, improve data accuracy and consistency, reduce manual reporting processes, and support timely, evidence-based decision-making while strengthening organizational transparency and accountability.
           </p>
 
           <h3 className="mb-4 text-2xl font-bold text-emerald-600 sm:text-xl">
@@ -572,7 +559,7 @@ function App() {
 
         <div className="border-t border-emerald-700/50 bg-black/20 px-6 py-5 text-center max-sm:px-4">
           <p className="m-0 text-[13px] text-emerald-200/80">
-            © 2025 Agrogoti Sangstha. All rights reserved.
+            Agrogoti Sangstha (AS) acknowledged that the MIS has developed by the support of IKI Small Grants through GIZ.
           </p>
         </div>
       </footer>

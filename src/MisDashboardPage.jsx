@@ -279,10 +279,32 @@ const projects = [
   },
   {
     id: 10,
-    name: "Jaagoron ",
+    name: "Jaagoron",
     title: "Project 10",
     logo: "/slides/jagoron.jpeg",
-    count: 0,
+    count: 4,
+    subItems: [
+      {
+        name: "JAAGORON Youth Profile",
+        dataUrl: "https://docs.google.com/spreadsheets/d/1x7sUxPhBbHZlR4FHELRVdySRSA-4KvypcWkxQAquPys/edit?usp=sharing",
+        dashboardUrl: "https://app.powerbi.com/view?r=eyJrIjoiOGMxMmI2NDItYWZiMy00Y2YyLTkwYTItYTllM2MzODk2ZDkzIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "JAAGORON Youth Group Formation Information",
+        dataUrl: "https://docs.google.com/spreadsheets/d/1uxDuOOPFGHRA1gUfPHNXaLdahDQyHpqqPytXpKMuXXM/edit?usp=sharing",
+        dashboardUrl: "https://app.powerbi.com/view?r=eyJrIjoiOTVjMTgzZmItNDczZi00NmQ4LWI3YWYtZmYyOGI5OTJiZWVkIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "JAAGORON YLO, CSO & OPD Profile List",
+        dataUrl: "https://docs.google.com/spreadsheets/d/1iXJ-jIiSNRIWaRmjRTCNCaJfdodnu0dG_47b62y5cRI/edit?usp=sharing",
+        dashboardUrl: "https://app.powerbi.com/view?r=eyJrIjoiY2EwYTViNzQtYmIwYS00MzdjLTk1YTAtNTA1ZGE1ZjMyY2UwIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+      {
+        name: "JAAGORON Youth group Training final",
+        dataUrl: "https://docs.google.com/spreadsheets/d/1VIkirHi--4KhphazMkJBLfphPAKeIdRKIGywYBX9cIc/edit?usp=sharing",
+        dashboardUrl: "https://app.powerbi.com/view?r=eyJrIjoiNzIzMThjN2QtNmFhNy00MGE0LTlmODMtYmFhYTc4MTZlOTkzIiwidCI6ImU3MWNiODkyLTg3NmQtNGM2YS1iZWJlLTI0OWU3YWVhMTA1ZiIsImMiOjEwfQ%3D%3D",
+      },
+    ],
   },
 ];
 
